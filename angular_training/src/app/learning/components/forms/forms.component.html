@@ -3,7 +3,7 @@
     <form #templateForm="ngForm" (ngSubmit)="onTemplateFormSubmit(templateForm)">
         <label>
             Name:
-            <input type="text" name="name" placeholder="Your name" required>
+            <input type="text" name="name" placeholder="Your name" ngModel required>
         </label>
         <br>
         <label>
@@ -20,7 +20,30 @@
 
     <br>
     -------------------------------------------------
+
+    <h2>Another exaple of Template-driven Form</h2>
     <br>
+    <form #srikanthForm="ngForm" (ngSubmit)="submitForm(srikanthForm)">
+        <label>
+            Name:
+            <input type="text" name="name" ngModel required>
+        </label>
+        <label>
+            Area:
+            <input type="text" name="area" ngModel required>
+        </label>
+        <label>
+            Message:
+            <input type="text" name="message" ngModel required>
+        </label>
+        <button>Submit</button>
+    </form>
+
+    <span *ngIf="formData">
+        <app-display-data [childData]="formData"></app-display-data>
+    </span>
+    
+    <!-- <br>
     <h2>Reactive Forms</h2>
     <br>
     <form [formGroup]="reactiveForm" (ngSubmit)="onReactiveFormSubmit(reactiveForm)">
@@ -40,6 +63,6 @@
         </label>
         <br>
         <button type="submit">Submit</button>
-    </form>
+    </form> -->
 
 </div>

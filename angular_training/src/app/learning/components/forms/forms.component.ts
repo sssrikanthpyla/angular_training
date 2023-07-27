@@ -9,21 +9,30 @@ import { Router } from '@angular/router';
 })
 export class FormsComponent {
 
-  reactiveForm!: FormGroup;
-  
+  // reactiveForm!: FormGroup;
+  formData: any;
   constructor(private _router: Router){}
 
   ngOnInit() {
     // Reactive Forms
-    this.reactiveForm = new FormGroup({
-      name: new FormControl(''),
-      email: new FormControl(''),
-      message: new FormControl('')
-    });
+    // this.reactiveForm = new FormGroup({
+    //   name: new FormControl(''),
+    //   email: new FormControl(''),
+    //   message: new FormControl('')
+    // });
   }
 
   // Reactive Forms
-  onReactiveFormSubmit(form: FormGroup) {
+  // onReactiveFormSubmit(form: FormGroup) {
+  //   if (form.valid) {
+  //     alert(`Name: ${form.value.name}, Email: ${form.value.email} and message: ${form.value.message}`);
+  //   } else {
+  //     alert('Please enter required fields');
+  //   }
+  // }
+
+  // Template-driven Form
+  onTemplateFormSubmit(form: any) {
     if (form.valid) {
       alert(`Name: ${form.value.name}, Email: ${form.value.email} and message: ${form.value.message}`);
     } else {
@@ -31,14 +40,16 @@ export class FormsComponent {
     }
   }
 
-  // Template-driven Form
-  onTemplateFormSubmit(form: any) {
-    // alert(`Name: ${form.name}, email: ${form.email} and message: ${form.message}`);
 
+  /////////////////////////////////////////////////////////////
+
+  submitForm(form: any) {
     if (form.valid) {
-      alert(`Name: ${form.value.name}, Email: ${form.value.email} and message: ${form.value.message}`);
+      this.formData = form.value;
+      // alert(`Name: ${form.value.name}, Area: ${form.value.area} and message: ${form.value.message}`);
+
     } else {
-      alert('Please enter required fields');
+      alert(`Enter the required fields`);
     }
   }
 }
