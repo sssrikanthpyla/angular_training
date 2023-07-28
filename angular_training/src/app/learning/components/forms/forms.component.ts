@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,37 +9,36 @@ import { Router } from '@angular/router';
 })
 export class FormsComponent {
 
-  // reactiveForm!: FormGroup;
+  reactiveForm!: FormGroup;
+  reactiveBuilderForm!: FormGroup;
   formData: any;
-  constructor(private _router: Router){}
+  constructor(private _router: Router, private fb: FormBuilder){}
 
   ngOnInit() {
     // Reactive Forms
-    // this.reactiveForm = new FormGroup({
-    //   name: new FormControl(''),
-    //   email: new FormControl(''),
-    //   message: new FormControl('')
-    // });
+    this.reactiveForm = new FormGroup({
+      name: new FormControl('srikanth'),
+      email: new FormControl('sssrikanth.pyla@gmail.com'),
+      message: new FormControl('Feeling good'),
+      other: new FormControl('Nothinf to say')
+    });
+
+    this.reactiveBuilderForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', [Validators.required]],
+      other: ['', [Validators.required]]
+    });
   }
 
   // Reactive Forms
-  // onReactiveFormSubmit(form: FormGroup) {
-  //   if (form.valid) {
-  //     alert(`Name: ${form.value.name}, Email: ${form.value.email} and message: ${form.value.message}`);
-  //   } else {
-  //     alert('Please enter required fields');
-  //   }
-  // }
-
-  // Template-driven Form
-  onTemplateFormSubmit(form: any) {
-    if (form.valid) {
-      alert(`Name: ${form.value.name}, Email: ${form.value.email} and message: ${form.value.message}`);
-    } else {
-      alert('Please enter required fields');
-    }
+  onReactiveFormSubmit() {
+    console.log('Inside onReactiveFormSubmit');
+    console.log(this.reactiveBuilderForm);
+    this.formData = this.reactiveBuilderForm.value;
   }
 
+  // Template-driven Form
   submitForm(form: any) {
     this.formData = form.value;
   }

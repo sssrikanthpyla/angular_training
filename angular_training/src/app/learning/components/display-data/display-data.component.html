@@ -4,10 +4,18 @@
     <label>
         Name: {{childData.name}}
     </label><br>
+    <span *ngIf="childData.area">
+        <label>
+            Area: {{childData.area}}
+        </label><br>
+    </span>
     <label>
-        Area: {{childData.area}}
+        Area: {{childData.email}}
     </label><br>
     <label>
         Message: {{childData.message}}
-    </label>
+    </label><br>
+    <label>
+        Area: {{childData.other}}
+    </label><br>
 </div>

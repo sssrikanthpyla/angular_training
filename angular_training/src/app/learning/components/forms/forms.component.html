@@ -1,27 +1,5 @@
 <div>
     <h2>Template-driven Form</h2>
-    <form #templateForm="ngForm" (ngSubmit)="onTemplateFormSubmit(templateForm)">
-        <label>
-            Name:
-            <input type="text" name="name" placeholder="Your name" ngModel required>
-        </label>
-        <br>
-        <label>
-            Email:
-            <input type="email" name="email" placeholder="Your email" ngModel required>
-        </label>
-        <br>
-        <label>
-            Message:
-            <input type="text" name="message" placeholder="Your message" ngModel required></label>
-        <br>
-        <button type="submit">Submit</button>
-    </form>
-
-    <br>
-    -------------------------------------------------
-
-    <h2>Another exaple of Template-driven Form</h2>
     <br>
     <form #tdForm="ngForm">
         <label>
@@ -44,31 +22,37 @@
         <br>
         <button type="submit" [disabled]="!tdForm.valid" (click)="submitForm(tdForm)">Submit</button>
     </form>
-
-    <span *ngIf="formData">
-        <app-display-data [childData]="formData"></app-display-data>
-    </span>
     
-    <!-- <br>
+    <br>
     <h2>Reactive Forms</h2>
     <br>
-    <form [formGroup]="reactiveForm" (ngSubmit)="onReactiveFormSubmit(reactiveForm)">
+    <form [formGroup]="reactiveBuilderForm">
         <label>
             Name:
-            <input formControlName="name" placeholder="Your name" required>
+            <input formControlName="name" placeholder="Your name">
         </label>
         <br>
         <label>
             Email:
-            <input formControlName="email" placeholder="Your email" required>
+            <input formControlName="email" placeholder="Your email">
         </label>
         <br>
         <label>
             Message:
-            <input formControlName="message" placeholder="Your message" required>
+            <input formControlName="message" placeholder="Your message">
+        </label><br>
+        <label>
+            other:
+            <input formControlName="other" placeholder="Your message">
         </label>
         <br>
-        <button type="submit">Submit</button>
-    </form> -->
+        <button type="submit" (click)="onReactiveFormSubmit()">Submit</button>
+    </form>
+
+
+    
+    <span *ngIf="formData">
+        <app-display-data [childData]="formData"></app-display-data>
+    </span>
 
 </div>
