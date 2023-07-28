@@ -40,16 +40,7 @@ export class FormsComponent {
     }
   }
 
-
-  /////////////////////////////////////////////////////////////
-
   submitForm(form: any) {
-    if (form.valid) {
-      this.formData = form.value;
-      // alert(`Name: ${form.value.name}, Area: ${form.value.area} and message: ${form.value.message}`);
-
-    } else {
-      alert(`Enter the required fields`);
-    }
+    this.formData = form.value;
   }
 }

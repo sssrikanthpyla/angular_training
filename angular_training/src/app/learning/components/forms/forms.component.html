@@ -23,20 +23,26 @@
 
     <h2>Another exaple of Template-driven Form</h2>
     <br>
-    <form #srikanthForm="ngForm" (ngSubmit)="submitForm(srikanthForm)">
+    <form #tdForm="ngForm">
         <label>
             Name:
             <input type="text" name="name" ngModel required>
-        </label>
+        </label><br>
+        <span style="color: red; font-size: 13px;" *ngIf="tdForm.form.controls['name'].touched && !tdForm.form.controls['name'].valid">Name field is required</span>
+        <br>
         <label>
             Area:
             <input type="text" name="area" ngModel required>
-        </label>
+        </label><br>
+        <span style="color: red; font-size: 13px;" *ngIf="tdForm.form.controls['area'].touched && !tdForm.form.controls['area'].valid">Area field is required</span>
+        <br>
         <label>
             Message:
             <input type="text" name="message" ngModel required>
-        </label>
-        <button>Submit</button>
+        </label><br>
+        <span style="color: red; font-size: 13px;" *ngIf="tdForm.form.controls['message'].touched && !tdForm.form.controls['message'].valid">Message field is required</span>
+        <br>
+        <button type="submit" [disabled]="!tdForm.valid" (click)="submitForm(tdForm)">Submit</button>
     </form>
 
     <span *ngIf="formData">
